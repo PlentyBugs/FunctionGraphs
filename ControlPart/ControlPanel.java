@@ -1,6 +1,8 @@
 package FunctionGraphs.ControlPart;
 
-import FunctionGraphs.FunctionCustom;
+import FunctionGraphs.Functions.Decryptor;
+import FunctionGraphs.Functions.Function;
+import FunctionGraphs.Functions.FunctionCustom;
 import FunctionGraphs.Graph;
 import FunctionGraphs.Window;
 
@@ -23,7 +25,12 @@ public class ControlPanel extends JPanel {
         setMaximumSize(new Dimension(width, height));
 
         add.addActionListener(e -> {
-            Graph.addFunction(new FunctionCustom(x -> x, Color.red));
+            Graph.addFunction(
+                    new Decryptor("()()()",
+                            new FunctionCustom(x -> x, Color.red))
+                            .getFunctionCustom()
+                            .setStringVersion(func.getText())
+            );
             Window.graph.repaint();
             drawWindow();
         });

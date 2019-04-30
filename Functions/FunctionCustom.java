@@ -1,4 +1,6 @@
-package FunctionGraphs;
+package FunctionGraphs.Functions;
+
+import FunctionGraphs.Functions.Function;
 
 import java.awt.*;
 
@@ -6,6 +8,7 @@ public class FunctionCustom {
 
     private Function function;
     private Color color;
+    private String stringVersion;
 
     public FunctionCustom(Function function, Color color){
         this.function = function;
@@ -30,6 +33,11 @@ public class FunctionCustom {
 
     @Override
     public String toString(){
-        return "Some Function";
+        return stringVersion;
+    }
+
+    public FunctionCustom setStringVersion(String stringVersion) {
+        this.stringVersion = stringVersion;
+        return this;
     }
 }

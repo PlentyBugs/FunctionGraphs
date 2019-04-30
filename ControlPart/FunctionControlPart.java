@@ -1,7 +1,6 @@
 package FunctionGraphs.ControlPart;
 
-import FunctionGraphs.Function;
-import FunctionGraphs.FunctionCustom;
+import FunctionGraphs.Functions.FunctionCustom;
 import FunctionGraphs.Graph;
 import FunctionGraphs.Window;
 

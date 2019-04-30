@@ -1,4 +1,4 @@
-package FunctionGraphs;
+package FunctionGraphs.Functions;
 
 @FunctionalInterface
 public interface Function {
