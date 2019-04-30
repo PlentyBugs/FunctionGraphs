@@ -1,13 +1,15 @@
 package FunctionGraphs;
 
+import FunctionGraphs.ControlPart.ControlPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame {
 
-    private Graph graph = new Graph();
+    public static Graph graph = new Graph();
     private JScrollPane scrollGraph = new JScrollPane(graph, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-    private ControlPanel controlPanel = new ControlPanel();
+    public static ControlPanel controlPanel = new ControlPanel();
 
     public Window(){
         super("FunctionGraphs.Graph");
@@ -17,9 +19,5 @@ public class Window extends JFrame {
         getContentPane().add(controlPanel, BorderLayout.EAST);
         pack();
         setVisible(true);
-        drawWindow();
-    }
-
-    private void drawWindow(){
     }
 }

@@ -9,7 +9,8 @@ public class Graph extends JPanel {
 
     private int width = 720;
     private int height = 720;
-    private static ArrayList<Function> functions = new ArrayList<>();
+    private final double STEP = 0.01;
+    private static ArrayList<FunctionCustom> functions = new ArrayList<>();
     private final Color BACKGROUND = Color.black;
 
     public Graph(){
@@ -46,17 +47,25 @@ public class Graph extends JPanel {
             graphics2D.draw(line2D2);
         }
 
-        for(Function function : functions){
-            graphics2D.setColor(new Color[]{Color.ORANGE, Color.red, Color.magenta, Color.BLUE, Color.cyan}[(int)(Math.random()*5)]);
-            for(double x = -width/2.0; x < width/2; x += 0.01){
-                double y = height/2.0 - function.getY(x);
+        for(FunctionCustom function : functions){
+            graphics2D.setColor(function.getColor());
+            for(double x = -width/2.0; x < width/2; x += STEP){
+                double y = height/2.0 - function.getFunction().getY(x);
                 Line2D line2D = new Line2D.Double(x + width/2.0, y, x + width/2.0, y);
                 graphics2D.draw(line2D);
             }
         }
     }
 
-    public static void addFunction(Function function){
+    public static void addFunction(FunctionCustom function){
         functions.add(function);
+    }
+
+    public static void removeFunction(FunctionCustom function){
+        functions.remove(function);
+    }
+
+    public static ArrayList<FunctionCustom> getFunctions() {
+        return functions;
     }
 }
