@@ -52,7 +52,7 @@ public class Graph extends JPanel {
         for(FunctionCustom function : functions){
             graphics2D.setColor(function.getColor());
             for(double x = -width/2.0; x < width/2; x += STEP){
-                double y = height/2.0 - function.getFunction().getY(x);
+                double y = height/2.0 - function.getFunction().getY(x/50)*50;
                 Line2D line2D = new Line2D.Double(x + width/2.0, y, x + width/2.0, y);
                 graphics2D.draw(line2D);
             }
