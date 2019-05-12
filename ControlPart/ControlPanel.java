@@ -1,6 +1,5 @@
 package FunctionGraphs.ControlPart;
 
-import FunctionGraphs.Functions.Decryptor;
 import FunctionGraphs.Functions.FunctionCustom;
 import FunctionGraphs.Functions.ParserFunc;
 import FunctionGraphs.Graph;
@@ -37,9 +36,9 @@ public class ControlPanel extends JPanel {
         scrollPane.setMinimumSize(new Dimension(width-20, 3*height/4));
         scrollPane.setMaximumSize(new Dimension(width-20, 3*height/4));
 
-        newFunction.setPreferredSize(new Dimension(width-20, height/4));
-        newFunction.setMinimumSize(new Dimension(width-20, height/4));
-        newFunction.setMaximumSize(new Dimension(width-20, height/4));
+        newFunction.setPreferredSize(new Dimension(width-20, height/4 - 10));
+        newFunction.setMinimumSize(new Dimension(width-20, height/4 - 10));
+        newFunction.setMaximumSize(new Dimension(width-20, height/4 - 10));
 
         JPanel panel = new JPanel(new BorderLayout());
         JLabel label = new JLabel("y(x) = ");
