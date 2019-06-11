@@ -9,11 +9,8 @@ import java.util.ArrayList;
 
 public class Graph extends JPanel {
 
-    private JScrollPane scrollGraph;
     private int width = 720;
     private int height = 720;
-    private int translateX;
-    private int translateY;
     private final double STEP = 0.01;
     private static ArrayList<FunctionCustom> functions = new ArrayList<>();
 
@@ -24,11 +21,9 @@ public class Graph extends JPanel {
     private Color numbers = Color.cyan;
 
     public Graph(){
-        setPreferredSize(new Dimension(width*3, height*3));
-        setMinimumSize(new Dimension(width*3, height*3));
-        setMaximumSize(new Dimension(width*3, height*3));
-        translateX = width;
-        translateY = height;
+        setPreferredSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(width, height));
+        setMaximumSize(new Dimension(width, height));
         setBackground(BACKGROUND);
     }
 
@@ -37,11 +32,6 @@ public class Graph extends JPanel {
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D) g;
         graphics2D.setFont(new Font("TimesRoman", Font.PLAIN, (int)(segment/2.5)));
-        if(scrollGraph != null){
-            translateX = scrollGraph.getViewport().getViewPosition().x;
-            translateY = scrollGraph.getViewport().getViewPosition().y;
-        }
-        graphics2D.translate(translateX, translateY);
         graphics2D.setColor(arrows);
 
         graphics2D.setStroke(new BasicStroke(2));
@@ -62,10 +52,10 @@ public class Graph extends JPanel {
             graphics2D.draw(line2D);
             graphics2D.draw(line2D2);
             graphics2D.setColor(numbers);
-            graphics2D.drawString(Integer.toString(x - width/2 + translateX), x, height/2+segment/2);
-            graphics2D.drawString(Integer.toString(-x + height/2 - translateY), width/2, x);
+            graphics2D.drawString(Integer.toString(x - width/2), x, height/2+segment/2);
+            graphics2D.drawString(Integer.toString(-x + height/2), width/2, x);
         }
-        graphics2D.drawString(Integer.toString(translateX), width/2, height/2+segment/2);
+        graphics2D.drawString("0", width/2, height/2+segment/2);
         for(int x = width/2 - segment; x > 0; x -= segment){
             graphics2D.setColor(web);
             Line2D line2D = new Line2D.Double(x, 0, x, height);
@@ -73,14 +63,14 @@ public class Graph extends JPanel {
             graphics2D.draw(line2D);
             graphics2D.draw(line2D2);
             graphics2D.setColor(numbers);
-            graphics2D.drawString(Integer.toString(x - width/2 + translateX), x, height/2+segment/2);
-            graphics2D.drawString(Integer.toString(-x + height/2 - translateY), width/2, x);
+            graphics2D.drawString(Integer.toString(x - width/2), x, height/2+segment/2);
+            graphics2D.drawString(Integer.toString(-x + height/2), width/2, x);
         }
 
         for(FunctionCustom function : functions){
             graphics2D.setColor(function.getColor());
             for(double x = -(width*3)/2.0; x < (width*3)/2; x += STEP){
-                double y = height/2.0 - function.getFunction().getY((x + translateX)/segment)*segment - translateY;
+                double y = height/2.0 - function.getFunction().getY((x)/segment)*segment;
                 Line2D line2D = new Line2D.Double(x + width/2.0, y, x + width/2.0, y);
                 graphics2D.draw(line2D);
             }
@@ -100,8 +90,6 @@ public class Graph extends JPanel {
     }
 
     public void setScroll(JScrollPane scrollGraph) {
-        this.scrollGraph = scrollGraph;
-
         scrollGraph.setPreferredSize(new Dimension(width, height));
         scrollGraph.setMinimumSize(new Dimension(width, height));
         scrollGraph.setMaximumSize(new Dimension(width, height));

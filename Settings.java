@@ -28,6 +28,7 @@ public class Settings extends JMenuBar {
 
         JLabel labelChooseBackground = new JLabel("Background color: ");
         JButton blackBack = new JButton();
+
         blackBack.addActionListener(e -> {
             Window.graph.setBackground(Color.black);
             Window.graph.setArrows(Color.green);
